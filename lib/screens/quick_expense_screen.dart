@@ -84,6 +84,7 @@ class _QuickExpenseScreenState extends State<QuickExpenseScreen> {
       return;
     }
 
+    FocusScope.of(context).unfocus();
     setState(() { _saving = true; _errorMsg = null; _successMsg = null; });
 
     try {
