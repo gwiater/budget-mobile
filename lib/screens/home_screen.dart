@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../core/api_client.dart';
 import '../core/secure_storage.dart';
 import 'login_screen.dart';
+import 'quick_expense_screen.dart';
 import 'receipt_screen.dart';
 import 'expense_list_screen.dart';
 
@@ -15,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = const [
+    QuickExpenseScreen(),
     ReceiptScreen(),
     ExpenseListScreen(),
   ];
@@ -47,6 +49,10 @@ class _HomeScreenState extends State<HomeScreen> {
         selectedItemColor: Colors.green,
         onTap: (i) => setState(() => _currentIndex = i),
         items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_circle_outline),
+            label: 'Szybki',
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.receipt_long),
             label: 'Paragon',
