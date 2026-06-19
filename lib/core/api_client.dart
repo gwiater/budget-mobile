@@ -57,8 +57,11 @@ class ApiClient {
   static Future<void> logout() => SecureStorage.deleteToken();
 
   // Categories
-  static Future<List<dynamic>> getCategories() => get('/categories') as Future<List<dynamic>>;
-  static Future<List<dynamic>> getSavingCategories() => get('/saving-categories') as Future<List<dynamic>>;
+  static Future<List<dynamic>> getCategories() async =>
+      (await get('/categories')) as List<dynamic>;
+
+  static Future<List<dynamic>> getSavingCategories() async =>
+      (await get('/saving-categories')) as List<dynamic>;
 
   // Expenses
   static Future<dynamic> createExpenses(Map<String, dynamic> body) =>
