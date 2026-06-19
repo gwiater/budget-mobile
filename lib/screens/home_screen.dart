@@ -15,12 +15,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
-  final List<Widget> _screens = const [
-    QuickExpenseScreen(),
-    ReceiptScreen(),
-    ExpenseListScreen(),
-  ];
-
   Future<void> _logout() async {
     await ApiClient.logout();
     if (!mounted) return;
@@ -43,7 +37,11 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: _screens[_currentIndex],
+      body: [
+        const QuickExpenseScreen(),
+        const ReceiptScreen(),
+        const ExpenseListScreen(),
+      ][_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         selectedItemColor: Colors.green,
